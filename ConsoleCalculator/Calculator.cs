@@ -15,7 +15,7 @@ namespace ConsoleCalculator
 
         private int Divide(int number1, int number2)
         {
-            throw new System.NotImplementedException();
+            return number1 / number2;
         }
     }
 }
