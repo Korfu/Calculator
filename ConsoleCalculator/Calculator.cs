@@ -6,8 +6,22 @@ namespace ConsoleCalculator
     {
         public int Calculate(int number1, int number2, string operation)
         {
-            if (operation == "/")
-                return Divide(number1, number2);
+            var nonNullOperation = operation ?? throw new ArgumentNullException(nameof(operation));
+            // if (operation == null)
+            //     throw new ArgumentNullException(nameof(operation));
+
+            if (nonNullOperation == "/")
+            {
+                try
+                {
+                    return Divide(number1, number2);
+                }
+                catch (DivideByZeroException ex)
+                {
+                    // throw;
+                    throw new ArithmeticException("Error occured when dividing by 0", ex);
+                }
+            }
 
             throw new ArgumentOutOfRangeException(nameof(operation), "The operator is not supported");
             // Console.WriteLine("Unkown operation");
