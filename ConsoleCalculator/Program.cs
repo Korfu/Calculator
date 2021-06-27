@@ -25,9 +25,13 @@ namespace ConsoleCalculator
                 Console.WriteLine("\nPress enter to exit");
                 Console.ReadLine();
             }
-            catch (ArgumentNullException ex)
+            catch (ArgumentNullException ex) when (ex.ParamName == "operation")
             {
                 Console.WriteLine($"Operation was not provided. {ex}");
+            }
+            catch (ArgumentNullException ex)
+            {
+                Console.WriteLine($"An argument was null. {ex}");
             }
             catch (ArithmeticException ex)
             {
