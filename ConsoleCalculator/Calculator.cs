@@ -8,9 +8,10 @@ namespace ConsoleCalculator
         {
             if (operation == "/")
                 return Divide(number1, number2);
-            
-            Console.WriteLine("Unkown operation");
-            return 0;
+
+            throw new ArgumentOutOfRangeException(nameof(operation), "The operator is not supported");
+            // Console.WriteLine("Unkown operation");
+            // return 0;
         }
 
         private int Divide(int number1, int number2)
